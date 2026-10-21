@@ -1,18 +1,22 @@
+{% load static %}
 <html>
     <head>
         <title>Django Girls blog</title>
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
-      <div>
-    <h1><a href="/">Django Girls Blog</a></h1>
-</div>
+        <header class="page-header">
+            <h1><a href="/">Django Girls Blog</a></h1>
+        </header>
 
-{% for post in posts %}
-    <div>
-        <p>published: {{ post.published_date }}</p>
-        <h2><a href="">{{ post.title }}</a></h2>
-        <p>{{ post.text|linebreaksbr }}</p>
-    </div>
-{% endfor %}
+        <main class="content">
+            {% for post in posts %}
+                <article class="post">
+                    <time class="date">published: {{ post.published_date }}</time>
+                    <h2><a href="">{{ post.title }}</a></h2>
+                    <p>{{ post.text|linebreaksbr }}</p>
+                </article>
+            {% endfor %}
+        </main>
     </body>
 </html>
